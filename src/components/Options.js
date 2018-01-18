@@ -20,33 +20,59 @@ class Option extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            action: '',
             title: '',
             showTimer: true,
             time: 10,
             type: '',
-            itemList: [
-                'one',
-                'two',
-                'three'
-            ]
-        }
+        },
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    showTimer() {
-        this.showTimer = this.showTimer.bind(this);
+    handleChange() {
+        if (this.props.action === 'showTimer') {
+            const timer = document.querySelector('#timerWrapper');
 
-        const timer = document.querySelector('#timerWrapper');
-
-        this.state.showTimer === true ? this.setState({showTimer: false}) : this.setState({showTimer: true});
-        this.state.showTimer === true ? timer.style.opacity = 1 : timer.style.opacity = 0;
+            this.state.showTimer === true ? this.setState({showTimer: false}) : this.setState({showTimer: true});
+            this.state.showTimer === true ? timer.style.opacity = 1 : timer.style.opacity = 0;
+        } else if (this.props.action === 'setTime') {
+            
+        } 
     }
 
     render() {
         return (
             <label style={labelStyle}>
                 {this.props.title}
-                <input type={this.props.type} onClick={this.props.action} />
+                <input type={this.props.type} onChange={this.handleChange} />
             </label>
+        );
+    }
+}
+
+class ItemList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            itemList: [
+                'one',
+                'two',
+                'three'
+            ],
+        }
+    }
+
+    render() {
+        return (
+            <ul style={{'list-style-type': 'none'}}>
+                <li>
+                    <label>
+                        Add an item:
+                        <input onChange={this.addItem} />
+                    </label>
+                </li>
+                {this.state.itemList.map(item => <li>{item}</li>)}
+            </ul>
         );
     }
 }
@@ -57,8 +83,8 @@ class Options extends Component {
             <div style={optionsStyle}>
                 <div style={titleStyle}>Options</div>
                 <Option title="Show Timer: " type="checkbox" action="showTimer" />
-                <Option title="Timer Duration (in minutes): " type="number" />
-                <Option title="Add an item: " type="text" />
+                <Option title="Timer Duration (in minutes): " type="number" action="setTime" />
+                <ItemList />
             </div>
         );
     }
