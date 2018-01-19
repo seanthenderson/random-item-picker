@@ -12,8 +12,7 @@ const titleStyle = {
 }
 
 const labelStyle = {
-    marginBottom: '10px',
-    display: 'block',
+    margin: '0 10px 10px',
 }
 
 class Option extends Component {
@@ -50,32 +49,7 @@ class Option extends Component {
     }
 }
 
-class ItemList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            itemList: [
-                'one',
-                'two',
-                'three'
-            ],
-        }
-    }
 
-    render() {
-        return (
-            <ul style={{'list-style-type': 'none'}}>
-                <li>
-                    <label>
-                        Add an item:
-                        <input onChange={this.addItem} />
-                    </label>
-                </li>
-                {this.state.itemList.map(item => <li>{item}</li>)}
-            </ul>
-        );
-    }
-}
 
 class Options extends Component {
     render() {
@@ -84,7 +58,6 @@ class Options extends Component {
                 <div style={titleStyle}>Options</div>
                 <Option title="Show Timer: " type="checkbox" action="showTimer" />
                 <Option title="Timer Duration (in minutes): " type="number" action="setTime" />
-                <ItemList />
             </div>
         );
     }

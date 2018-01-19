@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Options from './components/Options.js';
-import Items from './components/Items.js';
+import ItemList from './components/ItemList.js';
 import Buttons from './components/Buttons.js';
 import Timer from './components/Timer.js';
 
@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <main>
         <Options />
-        <Items />
+        <ItemList />
         <Buttons />
         <Timer />
       </main>
