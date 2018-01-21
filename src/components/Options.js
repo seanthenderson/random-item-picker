@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 
 const optionsStyle = {
+    marginBottom: '10px',
     backgroundColor: '#333',
     color: '#dcdcdc',
 }
 
-const titleStyle = {
-    margin: '20px 0',
-    textDecoration: 'underline',
-    textTransform: 'uppercase',
-}
-
 const labelStyle = {
     margin: '0 10px 10px',
+}
+
+const durationInputStyles = {
+    width: '50px'
 }
 
 class Option extends Component {
@@ -43,7 +42,7 @@ class Option extends Component {
         return (
             <label style={labelStyle}>
                 {this.props.title}
-                <input type={this.props.type} onChange={this.handleChange} />
+                <input type={this.props.type} onChange={this.handleChange} style={{maxWidth: '70px'}} />
             </label>
         );
     }
@@ -55,9 +54,8 @@ class Options extends Component {
     render() {
         return (
             <div style={optionsStyle}>
-                <div style={titleStyle}>Options</div>
                 <Option title="Show Timer: " type="checkbox" action="showTimer" />
-                <Option title="Timer Duration (in minutes): " type="number" action="setTime" />
+                <Option title="Minutes: " type="number" action="setTime" />
             </div>
         );
     }
