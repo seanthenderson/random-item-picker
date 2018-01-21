@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
 
+const appTitleStyles = {
+    width: '320px',
+    margin: '0 auto 30px',
+    padding: '10px 15px',
+    backgroundColor: '#fff',
+    border: '3px solid #fff',
+    borderRadius: '3px',
+    color: '#222'
+}
+
 const optionsStyle = {
     marginBottom: '10px',
     backgroundColor: '#333',
@@ -54,6 +64,7 @@ class Options extends Component {
     render() {
         return (
             <div style={optionsStyle}>
+                <h1 style={appTitleStyles}>Random Item Picker</h1>
                 <Option title="Show Timer: " type="checkbox" action="showTimer" />
                 <Option title="Minutes: " type="number" action="setTime" />
             </div>

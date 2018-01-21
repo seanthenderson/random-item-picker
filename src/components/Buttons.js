@@ -52,7 +52,8 @@ class Buttons extends Component {
         this.state.status === 'Start' ? button.style.background = '#ff0000' : button.style.background = '#1fa91f';
 
         for (let i=0; i<allItemsList.length; i++) {
-            allItems.push(allItemsList[i].textContent);
+            let itemText = allItemsList[i].textContent.replace('x','');
+            allItems.push(itemText);
         }
         
         if (this.state.status === 'Start') {

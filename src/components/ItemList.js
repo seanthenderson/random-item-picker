@@ -46,7 +46,7 @@ const List = props => (
     {
       props.items.map((item, index) =>
         <li style={listItemStyles} key={index}>
-            <span style={deleteStyles} onClick={this.removeItem}>&times;</span>
+            <span style={deleteStyles} onClick={this.removeItem}>x</span>
             {item}
         </li>)
     }
