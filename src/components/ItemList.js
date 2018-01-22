@@ -1,45 +1,38 @@
 import React, { Component } from "react";
+import styled from 'styled-components';
 
 let x = 0;
 let items = [];
 
-const labelStyles = {
-  color: "#dcdcdc"
-};
+const Label = styled.label`
+  color: #dcdcdc;
+`;
 
-const itemStyles = {
-  marginTop: "10%",
-  color: "#fff",
-  fontFamily: "Georgia, serif",
-  fontSize: "150px",
-  cursor: "pointer"
-};
+const ItemsList = styled.ul`
+  padding: 0;
+  color: #222;
+  list-style-type: none;
+  overflow: hidden;
+  transition: height 0.2s;
+`;
 
-const listStyles = {
-  padding: 0,
-  color: "#222",
-  listStyleType: "none",
-  overflow: "hidden",
-  transition: "height 0.2s"
-};
+const ListItem = styled.li`
+  max-width: 300px;
+  margin: 1px auto;
+  padding: 10px 25px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-weight: bold;
+  position: relative;
+`;
 
-const listItemStyles = {
-  maxWidth: "300px",
-  margin: "1px auto",
-  padding: "10px 25px",
-  backgroundColor: "#fff",
-  border: "1px solid #ddd",
-  borderRadius: "3px",
-  fontWeight: "bold",
-  position: "relative"
-};
-
-const deleteStyles = {
-  color: "#999",
-  position: "absolute",
-  right: "8px",
-  cursor: "pointer"
-};
+const DeleteButton = styled.i`
+  color: #999;
+  position: absolute;
+  right: 8px;
+  cursor: pointer;
+`;
 
 class List extends Component {
   constructor(props) {
@@ -50,19 +43,20 @@ class List extends Component {
 
   onClickClose() {
     var index = parseInt(this.props.index);
+    console.log(index);
     this.props.removeItem(index);
   }
 
   render() {
     return (
-      <ul style={listStyles} className="itemsList">
+      <ItemsList className="itemsList">
         {this.props.items.map((item, index) => (
-          <li style={listItemStyles} key={index} index={index}>
+          <ListItem key={index} index={index}>
             {item}
-            <i style={deleteStyles} className="fa fa-times" aria-hidden="true" onClick={this.onClickClose} />
-          </li>
+            <DeleteButton className="fa fa-times" aria-hidden="true" index={index} onClick={this.onClickClose} />
+          </ListItem>
         ))}
-      </ul>
+      </ItemsList>
     );
   }
 }
@@ -97,6 +91,7 @@ class ItemList extends Component {
 
   removeItem(itemIndex) {
     let newItems = items.splice(itemIndex, 1);
+    console.log(newItems);
     this.setState({items: newItems});
   }
 
@@ -104,10 +99,10 @@ class ItemList extends Component {
     return (
       <div>
         <form className="addItemForm" onSubmit={this.onSubmit}>
-          <label style={labelStyles}>
+          <Label>
             <input value={this.state.item} onChange={this.onChange} />
             <button type="submit">add item</button>
-          </label>
+          </Label>
         </form>
         <List items={this.state.items} removeItem={this.removeItem} />
       </div>

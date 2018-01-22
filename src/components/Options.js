@@ -1,29 +1,30 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
-const appTitleStyles = {
-    width: '320px',
-    margin: '0 auto 30px',
-    padding: '10px 15px',
-    backgroundColor: '#fff',
-    border: '3px solid #fff',
-    borderRadius: '3px',
-    color: '#222',
-    textShadow: '-1px 5px 10px #bbb'
-}
+const Title = styled.h1`
+    width: 320px;
+    margin: 0 auto 30px;
+    padding: 10px 15px;
+    background-color: #fff;
+    border: 3px solid #fff;
+    border-radius: 3px;
+    color: #222;
+    text-shadow: -1px 5px 10px #bbb;
+`;
 
-const optionsStyle = {
-    marginBottom: '10px',
-    backgroundColor: '#333',
-    color: '#dcdcdc',
-}
+const OptionsContainer = styled.div`
+    margin-bottom: 10px;
+    backgroun-color: #333;
+    color: #dcdcdc;
+`;
 
-const labelStyle = {
-    margin: '0 10px 10px',
-}
+const Label = styled.label`
+    margin: 0 10px 10px;
+`;
 
-const durationInputStyles = {
-    width: '50px'
-}
+const Input = styled.input`
+    max-width: 70px;
+`;
 
 class Option extends Component {
     constructor(props) {
@@ -40,7 +41,7 @@ class Option extends Component {
 
     handleChange() {
         if (this.props.action === 'showTimer') {
-            const timer = document.querySelector('#timerWrapper');
+            const timer = document.querySelector('.timerWrapper');
 
             this.state.showTimer === true ? this.setState({showTimer: false}) : this.setState({showTimer: true});
             this.state.showTimer === true ? timer.style.opacity = 1 : timer.style.opacity = 0;
@@ -51,10 +52,10 @@ class Option extends Component {
 
     render() {
         return (
-            <label style={labelStyle}>
+            <Label>
                 {this.props.title}
-                <input type={this.props.type} onChange={this.handleChange} style={{maxWidth: '70px'}} />
-            </label>
+                <Input type={this.props.type} onChange={this.handleChange} />
+            </Label>
         );
     }
 }
@@ -62,14 +63,24 @@ class Option extends Component {
 
 
 class Options extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+        this.setTime = this.setTime.bind(this);
+    }
+
+    setTime(e) {
+        var timeLeft = e.target.value.props.time;
+    }
+
     render() {
         return (
-            <div style={optionsStyle}>
-                <h1 style={appTitleStyles}>Random Item Picker</h1>
+            <OptionsContainer>
+                <Title>Random Item Picker</Title>
                 <Option title="Show Timer: " type="checkbox" action="showTimer" />
-                <Option title="Minutes: " type="number" action="setTime" />
-            </div>
-        );
+                <Option title="Minutes: " type="number" action="setTime" onChange={this.setTime} value={this.props.time} />
+            </OptionsContainer>
+        );  
     }
 }
 

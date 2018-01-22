@@ -1,37 +1,36 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 let x = 0;
 let intervalHandle;
 
-const buttonStyles = {
-    width: '150px',
-	margin: 'auto',
-	padding: '20px',
-	background: '#1fa91f',
-	border: '3px solid #fff',
-	borderRadius: '10px',
-	color: '#fff',
-	fontFamily: 'Arial, sans-serif',
-	fontSize: '30px',
-	fontWeight: 'bold',
-	textAlign: 'center',
-	textTransform: 'uppercase',
-	letterSpacing: '2px',
-	display: 'block',
-    cursor: 'pointer',
-    opacity: 0,
-    transition: 'opacity 0.2s'
-}
+const Button = styled.div `
+    width: 150px;
+	margin: auto;
+	padding: 20px;
+	background: #1fa91f;
+	border: 3px solid #fff;
+	border-radius: 10px;
+	color: #fff;
+	font-family: Arial, sans-serif;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	display: block;
+	cursor: pointer;
+`;
 
-const itemScrollStyles = {
-    margin: '15px 0',
-    color: '#fff',
-    fontFamily: 'Arial, sans-serif',
-    fontSize: '78px',
-    cursor: 'pointer',
-    opacity: 0,
-    transition: 'opacity 0.2s'
-}
+const ItemsScroll = styled.div`
+    margin: 15px 0;
+    color: #fff;
+    fon-family: Arial, sans-serif;
+    font-size: 78px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s
+`;
 
 class Buttons extends Component {
     constructor(props) {
@@ -74,8 +73,8 @@ class Buttons extends Component {
     render() {
         return(
             <div>
-                <div className="startStopButton" style={buttonStyles} onClick={this.startStop}>{this.state.status}</div>
-                <div className="itemScroll" style={itemScrollStyles}></div>
+                <Button className="startStopButton" onClick={this.startStop}>{this.state.status}</Button>
+                <ItemsScroll className="itemScroll"></ItemsScroll>
             </div>
         )
     }
