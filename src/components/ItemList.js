@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 let x = 0;
+let items = [];
 
 const labelStyles = {
   color: "#dcdcdc"
@@ -35,23 +36,36 @@ const listItemStyles = {
 
 const deleteStyles = {
   color: "#999",
-  fontWeight: "bold",
   position: "absolute",
   right: "8px",
   cursor: "pointer"
 };
 
-const List = props => (
-  <ul style={listStyles} className="itemsList">
-    {
-      props.items.map((item, index) =>
-        <li style={listItemStyles} key={index}>
-            <span style={deleteStyles} onClick={this.removeItem}>x</span>
+class List extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.onClickClose = this.onClickClose.bind(this);
+  }
+
+  onClickClose() {
+    var index = parseInt(this.props.index);
+    this.props.removeItem(index);
+  }
+
+  render() {
+    return (
+      <ul style={listStyles} className="itemsList">
+        {this.props.items.map((item, index) => (
+          <li style={listItemStyles} key={index} index={index}>
             {item}
-        </li>)
-    }
-  </ul>
-);
+            <i style={deleteStyles} className="fa fa-times" aria-hidden="true" onClick={this.onClickClose} />
+          </li>
+        ))}
+      </ul>
+    );
+  }
+}
 
 class ItemList extends Component {
   constructor(props) {
@@ -60,7 +74,7 @@ class ItemList extends Component {
       item: "",
       items: []
     };
-    //this.removeItem = this.removeItem.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   onChange = event => {
@@ -70,20 +84,20 @@ class ItemList extends Component {
   onSubmit = event => {
     event.preventDefault();
 
-    if (x === 1) {
-      document.querySelector(".startStopButton").style.opacity = 1;
-    }
-    x++;
-
     this.setState({
       item: "",
       items: [...this.state.items, this.state.item]
     });
+
+    if (x === 1) {
+      document.querySelector(".startStopButton").style.opacity = 1;
+    }
+    x++;
   };
 
   removeItem(itemIndex) {
-    var index = parseInt(this.props.key);
-    this.props.removeItem(index);
+    let newItems = items.splice(itemIndex, 1);
+    this.setState({items: newItems});
   }
 
   render() {
@@ -95,7 +109,7 @@ class ItemList extends Component {
             <button type="submit">add item</button>
           </label>
         </form>
-        <List items={this.state.items} />
+        <List items={this.state.items} removeItem={this.removeItem} />
       </div>
     );
   }

@@ -7,7 +7,8 @@ const appTitleStyles = {
     backgroundColor: '#fff',
     border: '3px solid #fff',
     borderRadius: '3px',
-    color: '#222'
+    color: '#222',
+    textShadow: '-1px 5px 10px #bbb'
 }
 
 const optionsStyle = {

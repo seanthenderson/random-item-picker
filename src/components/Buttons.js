@@ -74,8 +74,8 @@ class Buttons extends Component {
     render() {
         return(
             <div>
-                <div className="itemScroll" style={itemScrollStyles}>Sorts here</div>
                 <div className="startStopButton" style={buttonStyles} onClick={this.startStop}>{this.state.status}</div>
+                <div className="itemScroll" style={itemScrollStyles}></div>
             </div>
         )
     }

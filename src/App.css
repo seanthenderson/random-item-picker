@@ -10,7 +10,6 @@ main {
 input {
   margin: 0 5px;
   padding: 10px 15px;
-  background-color: #e0e0e0;
   border: 1px solid #ddd;
   border-radius: 3px;
   font-size: 18px;
@@ -20,6 +19,7 @@ input {
 input[type="checkbox"] {
   zoom: 3;
   vertical-align: middle;
+  filter: brightness(150%);
 }
 
 button {
@@ -31,5 +31,9 @@ button {
   color: #ececec;
   font-size: 18px;
   cursor: pointer;
+}
+
+i.fa-times:hover {
+  color: #222 !important;
 }
 
