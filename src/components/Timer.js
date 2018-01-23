@@ -40,6 +40,7 @@ const Time = styled.div`
     font-size: 30px;
     font-weight: bold;
     opacity: 0;
+    transform: opacity 0.5s;
 `;
 
 const TimeFragment = styled.span`
@@ -49,6 +50,21 @@ const TimeFragment = styled.span`
     border-radius: 3px;
     color: #222;
     font-size: 35px;
+`;
+
+const TimesUp = styled.div`
+    background-color: red;
+    color: #fff;
+    font-size: 16vw;
+    font-weight: bold;
+    text-align: center;
+    line-height: 60vh; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
 `;
 
 class Timer extends Component {
@@ -93,10 +109,11 @@ class Timer extends Component {
       }
     
       startStop() {
+        // Get time input value  
         const initialTimeInput = document.querySelector('input[type="number"').value;
         initialTime = initialTimeInput;
-        console.log(initialTime);
         
+        // Start/Stop timer
         this.state.timer ? this.timer = setInterval(this.countDown, 1000) : clearInterval(this.timer);
         this.state.timer ? this.setState({timer: false}) : this.setState({timer: true});
         if (this.state.timer === false) {
@@ -108,6 +125,7 @@ class Timer extends Component {
         const itemScroll = document.querySelector('.itemScroll');
         let allItems = [];
 
+        // Start/Stop item scroll
         this.state.status === 'Start' ? this.setState({ status: 'Stop' }) : this.setState({ status: 'Start' });
         this.state.status === 'Start' ? button.style.background = '#ff0000' : button.style.background = '#1fa91f';
 
@@ -161,6 +179,7 @@ class Timer extends Component {
                 <TimeFragment>{this.state.time.m}</TimeFragment> : 
                 <TimeFragment>{this.state.time.s}</TimeFragment>
             </Time>
+            <TimesUp active={this.props.active}>Time's Up!</TimesUp>
           </div>
         );
       }

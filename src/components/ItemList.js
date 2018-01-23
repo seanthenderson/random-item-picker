@@ -37,6 +37,21 @@ const DeleteButton = styled.i`
   }
 `;
 
+const Form = styled.form`
+  margin-top: 20px;
+`;
+
+const Button = styled.button`
+  margin: 5px;
+  padding: 10px 12px;
+  background: rgb(17, 90, 248);
+  border: 1px solid rgb(17, 90, 248);
+  border-radius: 3px;
+  color: #ececec;
+  font-size: 18px;
+  cursor: pointer;
+`;
+
 class List extends Component {
   onClickClose(index, event) {
     var index = parseInt(index);
@@ -96,12 +111,12 @@ class ItemList extends Component {
   render() {
     return (
       <div>
-        <form className="addItemForm" onSubmit={this.onSubmit}>
+        <Form className="addItemForm" onSubmit={this.onSubmit}>
           <Label>
             <input value={this.state.item} onChange={this.onChange} />
-            <button type="submit">add item</button>
+            <Button type="submit">add item</Button>
           </Label>
-        </form>
+        </Form>
         <List items={this.state.items} removeItem={() => this.removeItem()} />
       </div>
     );

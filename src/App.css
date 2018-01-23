@@ -4,11 +4,13 @@ body {
 }
 
 main {
-  padding: 20px 0;
+  /* max-width: 320px;
+  margin: auto;
+  padding: 20px 0; */
 }
 
 input {
-  margin: 0 5px;
+  margin: 0 3px;
   padding: 10px 15px;
   border: 1px solid #ddd;
   border-radius: 3px;
@@ -22,14 +24,4 @@ input[type="checkbox"] {
   filter: brightness(150%);
 }
 
-button {
-  margin: 5px;
-  padding: 10px 15px;
-  background: rgb(17, 90, 248);
-  border: 1px solid rgb(17, 90, 248);
-  border-radius: 3px;
-  color: #ececec;
-  font-size: 18px;
-  cursor: pointer;
-}
 
