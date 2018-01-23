@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 let x = 0;
 let intervalHandle;
+let initialTime = 60;
 
 const Button = styled.div`
     width: 150px;
@@ -55,11 +56,11 @@ class Timer extends Component {
         super();
         this.state = { 
             time: {}, 
-            seconds: 60,
+            seconds: initialTime,
             status: 'Start',
             timer: false
         };
-        this.timer = 0;
+        this.timer = this.state.seconds;
         this.countDown = this.countDown.bind(this);
       }
     
@@ -84,15 +85,22 @@ class Timer extends Component {
       componentDidMount() {
         let timeLeftVar = this.secondsToTime(this.state.seconds);
         this.setState({ time: timeLeftVar });
+      }
 
-        
+      componentWillMount() {
+        let timeLeftVar = this.secondsToTime(this.state.seconds);
+        this.setState({ time: timeLeftVar });
       }
     
       startStop() {
+        const initialTimeInput = document.querySelector('input[type="number"').value;
+        initialTime = initialTimeInput;
+        console.log(initialTime);
+        
         this.state.timer ? this.timer = setInterval(this.countDown, 1000) : clearInterval(this.timer);
         this.state.timer ? this.setState({timer: false}) : this.setState({timer: true});
         if (this.state.timer === false) {
-            this.setState({seconds: 61});
+            this.setState({seconds: initialTime});
         } 
 
         const button = document.querySelector('.startStopButton');
@@ -114,6 +122,8 @@ class Timer extends Component {
             }, 50);
             document.querySelector('.itemScroll').style.opacity = 1;
         } else {
+            this.setState({seconds: initialTime});
+            console.log(initialTime);
             clearInterval(intervalHandle);
         }
       }
@@ -128,8 +138,8 @@ class Timer extends Component {
         
         // Check if we're at zero.
         if (seconds == 0) { 
-          console.log('at zero');  
           clearInterval(this.timer);
+          alert('time\'s up!');
         }
 
         // Add zero to minute mark
@@ -137,6 +147,8 @@ class Timer extends Component {
 
         if (timerSeconds[1].textContent === '0') {
             timerSeconds[1].textContent += '0';
+        } else if (timerSeconds[1].textContent <= 9 && timerSeconds[1].textContent > 0) {
+            timerSeconds[1].textContent = '0' + timerSeconds[1].textContent;
         }
       }
     

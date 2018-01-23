@@ -33,7 +33,6 @@ class Option extends Component {
             action: '',
             title: '',
             showTimer: true,
-            time: 10,
             type: '',
         }
     }
@@ -51,6 +50,8 @@ class Option extends Component {
         
         if (timerSeconds[1].textContent === '0') {
             timerSeconds[1].textContent += '0';
+        } else if (timerSeconds[1].textContent <= 9 && timerSeconds[1].textContent > 0) {
+            timerSeconds[1].textContent = '0' + timerSeconds[1].textContent;
         }
     }
 
@@ -58,7 +59,7 @@ class Option extends Component {
         return (
             <Label>
                 {this.props.title}
-                <Input type={this.props.type} onChange={() => this.handleChange()} />
+                <Input type={this.props.type} onChange={() => this.handleChange()} defaultValue={this.props.value}/>
             </Label>
         );
     }
@@ -69,12 +70,9 @@ class Option extends Component {
 class Options extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
-        this.setTime = this.setTime.bind(this);
-    }
-
-    setTime(e) {
-        var timeLeft = e.target.value.props.time;
+        this.state = {
+            time: 60
+        };
     }
 
     render() {
@@ -82,7 +80,7 @@ class Options extends Component {
             <OptionsContainer>
                 <Title>Random Item Picker</Title>
                 <Option title="Show Timer: " type="checkbox" action="showTimer" />
-                <Option title="Seconds: " type="number" action="setTime" onChange={this.setTime} value={this.props.time} />
+                <Option title="Seconds: " type="number" value={this.state.time} />
             </OptionsContainer>
         );
     }
