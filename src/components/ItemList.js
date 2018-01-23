@@ -54,9 +54,9 @@ class List extends Component {
     return (
       <ItemsList className="itemsList">
         {this.props.items.map((item, index) => (
-          <ListItem key={index} onClick={this.onClickClose.bind(this, index)}>
+          <ListItem key={index}>
             {item}
-            <DeleteButton className="fa fa-times" aria-hidden="true" />
+            <DeleteButton className="fa fa-times" aria-hidden="true" onClick={this.onClickClose.bind(this, index)} />
           </ListItem>
         ))}
       </ItemsList>
@@ -70,8 +70,7 @@ class ItemList extends Component {
     this.state = {
       item: "",
       items: []
-    };
-    this.removeItem = this.removeItem.bind(this);
+    }
   }
 
   onChange = event => {
@@ -111,7 +110,7 @@ class ItemList extends Component {
             <button type="submit">add item</button>
           </Label>
         </form>
-        <List items={this.state.items} removeItem={this.removeItem} />
+        <List items={this.state.items} removeItem={() => this.removeItem()} />
       </div>
     );
   }

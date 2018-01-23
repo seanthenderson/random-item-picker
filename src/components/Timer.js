@@ -19,7 +19,7 @@ class Timer extends Component {
 
     render() {
         return (
-            <TimeLeft className="timerWrapper">Timer</TimeLeft>
+            <TimeLeft className="timerWrapper">timer</TimeLeft>
         );
     }
 }

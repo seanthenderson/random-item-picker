@@ -37,8 +37,7 @@ class Buttons extends Component {
         super(props);
         this.state = {
             status: 'Start'
-        },
-        this.startStop = this.startStop.bind(this);
+        }
     }
 
     startStop() {
@@ -64,6 +63,22 @@ class Buttons extends Component {
         } else {
             clearInterval(intervalHandle);
             //document.querySelector('.itemsList').style.height = "auto";
+            const timer = document.querySelector('.timerWrapper');
+            const presentTime = timer.innerHTML;
+            // const timeArray = presentTime.split(/[:]+/);
+            // let m = timeArray[0];
+            // let s = checkSecond((timeArray[1] - 1));
+                
+            // if (s==59) {
+            //         m = m-1;
+            //     }
+            // if (m < 0) {
+            //         timesUp.style.display = "block";
+            //     }
+            
+            // timer.innerHTML = m + ":" + s;
+                
+            // setTimeout(startTimer, 1000);
         }
         
 
@@ -73,7 +88,7 @@ class Buttons extends Component {
     render() {
         return(
             <div>
-                <Button className="startStopButton" onClick={this.startStop}>{this.state.status}</Button>
+                <Button className="startStopButton" onClick={() => this.startStop()}>{this.state.status}</Button>
                 <ItemsScroll className="itemScroll"></ItemsScroll>
             </div>
         )

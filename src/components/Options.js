@@ -35,8 +35,7 @@ class Option extends Component {
             showTimer: true,
             time: 10,
             type: '',
-        },
-        this.handleChange = this.handleChange.bind(this);
+        }
     }
 
     handleChange() {
@@ -54,7 +53,7 @@ class Option extends Component {
         return (
             <Label>
                 {this.props.title}
-                <Input type={this.props.type} onChange={this.handleChange} />
+                <Input type={this.props.type} onChange={() => this.handleChange()} />
             </Label>
         );
     }
