@@ -45,6 +45,13 @@ class Option extends Component {
             this.state.showTimer === true ? this.setState({ showTimer: false }) : this.setState({ showTimer: true });
             this.state.showTimer === true ? timer.style.opacity = 1 : timer.style.opacity = 0;
         }
+
+        // Add zero to minute mark
+        const timerSeconds = document.querySelectorAll('.timerWrapper span');
+        
+        if (timerSeconds[1].textContent === '0') {
+            timerSeconds[1].textContent += '0';
+        }
     }
 
     render() {
@@ -75,7 +82,7 @@ class Options extends Component {
             <OptionsContainer>
                 <Title>Random Item Picker</Title>
                 <Option title="Show Timer: " type="checkbox" action="showTimer" />
-                <Option title="Minutes: " type="number" action="setTime" onChange={this.setTime} value={this.props.time} />
+                <Option title="Seconds: " type="number" action="setTime" onChange={this.setTime} value={this.props.time} />
             </OptionsContainer>
         );
     }

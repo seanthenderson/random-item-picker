@@ -11,7 +11,6 @@ class App extends Component {
       <main>
         <Options />
         <ItemList />
-        <Buttons />
         <Timer />
       </main>
     );

@@ -1,19 +1,53 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const TimeLeft = styled.div`
-    margin: 50px 0;
-	color: #fff;
-	font-family: Arial; sans-serif;
-	font-size: 50px;
-	text-align: center;
-	opacity: 0;
-	transition: opacity 1s;
+let x = 0;
+let intervalHandle;
+
+const Button = styled.div`
+    width: 150px;
+    margin: auto;
+    padding: 20px;
+    background: #1fa91f;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    opacity: 0;
+    cursor: pointer;
+`;
+
+const ItemsScroll = styled.div`
+    margin: 15px 0;
+    color: #fff;
+    fon-family: Arial, sans-serif;
+    font-size: 78px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s
 `;
 
 const Time = styled.div`
-    color: #fff;
-    font-size: 20px;
+    margin-top: 20px;
+    color: #dcdcdc;
+    font-size: 30px;
+    font-weight: bold;
+    opacity: 0;
+`;
+
+const TimeFragment = styled.span`
+    margin-left: 5px;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 3px;
+    color: #222;
+    font-size: 35px;
 `;
 
 class Timer extends Component {
@@ -21,10 +55,11 @@ class Timer extends Component {
         super();
         this.state = { 
             time: {}, 
-            seconds: 60
+            seconds: 60,
+            status: 'Start',
+            timer: false
         };
         this.timer = 0;
-        this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
       }
     
@@ -42,17 +77,44 @@ class Timer extends Component {
           "m": minutes,
           "s": seconds
         };
+
         return obj;
       }
     
       componentDidMount() {
         let timeLeftVar = this.secondsToTime(this.state.seconds);
         this.setState({ time: timeLeftVar });
+
+        
       }
     
-      startTimer() {
-        if (this.timer == 0) {
-          this.timer = setInterval(this.countDown, 1000);
+      startStop() {
+        this.state.timer ? this.timer = setInterval(this.countDown, 1000) : clearInterval(this.timer);
+        this.state.timer ? this.setState({timer: false}) : this.setState({timer: true});
+        if (this.state.timer === false) {
+            this.setState({seconds: 61});
+        } 
+
+        const button = document.querySelector('.startStopButton');
+        const allItemsList = document.querySelectorAll('.itemsList li');
+        const itemScroll = document.querySelector('.itemScroll');
+        let allItems = [];
+
+        this.state.status === 'Start' ? this.setState({ status: 'Stop' }) : this.setState({ status: 'Start' });
+        this.state.status === 'Start' ? button.style.background = '#ff0000' : button.style.background = '#1fa91f';
+
+        for (let i = 0; i < allItemsList.length; i++) {
+            let itemText = allItemsList[i].textContent.replace('x', '');
+            allItems.push(itemText);
+        }
+
+        if (this.state.status === 'Start') {
+            intervalHandle = setInterval(function () {
+                itemScroll.textContent = allItems[x++ % allItems.length];
+            }, 50);
+            document.querySelector('.itemScroll').style.opacity = 1;
+        } else {
+            clearInterval(intervalHandle);
         }
       }
     
@@ -66,17 +128,27 @@ class Timer extends Component {
         
         // Check if we're at zero.
         if (seconds == 0) { 
+          console.log('at zero');  
           clearInterval(this.timer);
+        }
+
+        // Add zero to minute mark
+        const timerSeconds = document.querySelectorAll('.timerWrapper span');
+
+        if (timerSeconds[1].textContent === '0') {
+            timerSeconds[1].textContent += '0';
         }
       }
     
       render() {
         return(
           <div>
-            <TimeLeft className="timerWrapper" onClick={this.startTimer}>
-                Start
-                <Time>{this.state.time.m} : {this.state.time.s}</Time>
-            </TimeLeft>
+            <ItemsScroll className="itemScroll"></ItemsScroll>
+            <Button className="startStopButton" onClick={() => this.startStop()}>{this.state.status}</Button>
+            <Time className="timerWrapper">
+                <TimeFragment>{this.state.time.m}</TimeFragment> : 
+                <TimeFragment>{this.state.time.s}</TimeFragment>
+            </Time>
           </div>
         );
       }
