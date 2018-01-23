@@ -4,7 +4,7 @@ import styled from 'styled-components';
 let x = 0;
 let intervalHandle;
 
-const Button = styled.div `
+const Button = styled.div`
     width: 150px;
 	margin: auto;
 	padding: 20px;
@@ -18,7 +18,8 @@ const Button = styled.div `
 	text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	display: block;
+    display: block;
+    opacity: 0;
 	cursor: pointer;
 `;
 
@@ -46,14 +47,14 @@ class Buttons extends Component {
         const itemScroll = document.querySelector('.itemScroll');
         let allItems = [];
 
-        this.state.status === 'Start' ? this.setState({status: 'Stop'}) : this.setState({status: 'Start'});
+        this.state.status === 'Start' ? this.setState({ status: 'Stop' }) : this.setState({ status: 'Start' });
         this.state.status === 'Start' ? button.style.background = '#ff0000' : button.style.background = '#1fa91f';
 
-        for (let i=0; i<allItemsList.length; i++) {
-            let itemText = allItemsList[i].textContent.replace('x','');
+        for (let i = 0; i < allItemsList.length; i++) {
+            let itemText = allItemsList[i].textContent.replace('x', '');
             allItems.push(itemText);
         }
-        
+
         if (this.state.status === 'Start') {
             intervalHandle = setInterval(function () {
                 itemScroll.textContent = allItems[x++ % allItems.length];
@@ -65,28 +66,11 @@ class Buttons extends Component {
             //document.querySelector('.itemsList').style.height = "auto";
             const timer = document.querySelector('.timerWrapper');
             const presentTime = timer.innerHTML;
-            // const timeArray = presentTime.split(/[:]+/);
-            // let m = timeArray[0];
-            // let s = checkSecond((timeArray[1] - 1));
-                
-            // if (s==59) {
-            //         m = m-1;
-            //     }
-            // if (m < 0) {
-            //         timesUp.style.display = "block";
-            //     }
-            
-            // timer.innerHTML = m + ":" + s;
-                
-            // setTimeout(startTimer, 1000);
         }
-        
-
-        
     }
 
     render() {
-        return(
+        return (
             <div>
                 <Button className="startStopButton" onClick={() => this.startStop()}>{this.state.status}</Button>
                 <ItemsScroll className="itemScroll"></ItemsScroll>

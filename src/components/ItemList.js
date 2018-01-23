@@ -38,12 +38,6 @@ const DeleteButton = styled.i`
 `;
 
 class List extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    //this.onClickClose = this.onClickClose.bind(this);
-  }
-
   onClickClose(index, event) {
     var index = parseInt(index);
     console.log(index);
@@ -74,6 +68,7 @@ class ItemList extends Component {
   }
 
   onChange = event => {
+    const button = document.querySelector('.startStopButton');
     this.setState({ item: event.target.value });
   };
 
@@ -93,11 +88,8 @@ class ItemList extends Component {
 
   removeItem(itemIndex) {
     let allItems = this.state.items;
-    console.log(allItems);
     allItems.splice(itemIndex, 1);
-    console.log(allItems);
     let newItems = allItems;
-    console.log(newItems);
     this.setState({items: newItems});
   }
 

@@ -42,11 +42,9 @@ class Option extends Component {
         if (this.props.action === 'showTimer') {
             const timer = document.querySelector('.timerWrapper');
 
-            this.state.showTimer === true ? this.setState({showTimer: false}) : this.setState({showTimer: true});
+            this.state.showTimer === true ? this.setState({ showTimer: false }) : this.setState({ showTimer: true });
             this.state.showTimer === true ? timer.style.opacity = 1 : timer.style.opacity = 0;
-        } else if (this.props.action === 'setTime') {
-            
-        } 
+        }
     }
 
     render() {
@@ -79,7 +77,7 @@ class Options extends Component {
                 <Option title="Show Timer: " type="checkbox" action="showTimer" />
                 <Option title="Minutes: " type="number" action="setTime" onChange={this.setTime} value={this.props.time} />
             </OptionsContainer>
-        );  
+        );
     }
 }
 
