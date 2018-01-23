@@ -32,17 +32,20 @@ const DeleteButton = styled.i`
   position: absolute;
   right: 8px;
   cursor: pointer;
+  &:hover {
+    color: #222;
+  }
 `;
 
 class List extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.onClickClose = this.onClickClose.bind(this);
+    //this.onClickClose = this.onClickClose.bind(this);
   }
 
-  onClickClose() {
-    var index = parseInt(this.props.index);
+  onClickClose(index, event) {
+    var index = parseInt(index);
     console.log(index);
     this.props.removeItem(index);
   }
@@ -51,9 +54,9 @@ class List extends Component {
     return (
       <ItemsList className="itemsList">
         {this.props.items.map((item, index) => (
-          <ListItem key={index} index={index}>
+          <ListItem key={index} onClick={this.onClickClose.bind(this, index)}>
             {item}
-            <DeleteButton className="fa fa-times" aria-hidden="true" index={index} onClick={this.onClickClose} />
+            <DeleteButton className="fa fa-times" aria-hidden="true" />
           </ListItem>
         ))}
       </ItemsList>
@@ -90,7 +93,11 @@ class ItemList extends Component {
   };
 
   removeItem(itemIndex) {
-    let newItems = items.splice(itemIndex, 1);
+    let allItems = this.state.items;
+    console.log(allItems);
+    allItems.splice(itemIndex, 1);
+    console.log(allItems);
+    let newItems = allItems;
     console.log(newItems);
     this.setState({items: newItems});
   }
