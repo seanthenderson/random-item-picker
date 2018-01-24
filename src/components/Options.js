@@ -3,18 +3,18 @@ import styled from 'styled-components';
 
 const OptionsContainer = styled.div`
     margin-bottom: 10px;
-    color: #dcdcdc;
+    color: #222;
 `;
 
 const Title = styled.h1`
-    width: 100%;
+    width: 360px;
     margin: 0 auto 30px;
     padding: 10px 0;
-    background-color: #fff;
-    border: 3px solid #fff;
-    border-radius: 3px;
-    color: #222;
-    text-shadow: -1px 5px 10px #bbb;
+    background-color: #101010;
+    border: 4px solid #101010; 
+    color: #eee;
+    font-size: 30px;
+    text-transform: uppercase;
     @media (max-width: 400px) {
         width: auto;
     }
