@@ -6,6 +6,35 @@ let items = [];
 
 const Label = styled.label`
   color: #dcdcdc;
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+`;
+
+const Input = styled.input`
+  margin: 0 3px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: bold;
+  grid-column: span 8;
+`;
+
+const Button = styled.button`
+  margin-left: 5px;
+  padding: 10px 12px;
+  background: rgb(17, 90, 248);
+  border: 1px solid rgb(17, 90, 248);
+  border-radius: 3px;
+  color: #ececec;
+  font-size: 18px;
+  cursor: pointer;
+  grid-column: span 2;
+`;
+
+const ItemsButton = styled.div`
+  grid-column: span 10;
 `;
 
 const ItemsList = styled.ul`
@@ -17,7 +46,6 @@ const ItemsList = styled.ul`
 `;
 
 const ListItem = styled.li`
-  max-width: 300px;
   margin: 1px auto;
   padding: 10px 25px;
   background-color: #fff;
@@ -39,17 +67,7 @@ const DeleteButton = styled.i`
 
 const Form = styled.form`
   margin-top: 20px;
-`;
-
-const Button = styled.button`
-  margin: 5px;
-  padding: 10px 12px;
-  background: rgb(17, 90, 248);
-  border: 1px solid rgb(17, 90, 248);
-  border-radius: 3px;
-  color: #ececec;
-  font-size: 18px;
-  cursor: pointer;
+  display: flex;
 `;
 
 class List extends Component {
@@ -110,15 +128,15 @@ class ItemList extends Component {
 
   render() {
     return (
-      <div>
+      <ItemsButton>
         <Form className="addItemForm" onSubmit={this.onSubmit}>
           <Label>
-            <input value={this.state.item} onChange={this.onChange} />
+            <Input value={this.state.item} onChange={this.onChange} />
             <Button type="submit">add item</Button>
           </Label>
         </Form>
         <List items={this.state.items} removeItem={() => this.removeItem()} />
-      </div>
+      </ItemsButton>
     );
   }
 }

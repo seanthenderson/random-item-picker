@@ -1,29 +1,37 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+const OptionsContainer = styled.div`
+    margin-bottom: 10px;
+    color: #dcdcdc;
+`;
+
 const Title = styled.h1`
-    width: 320px;
+    width: 100%;
     margin: 0 auto 30px;
-    padding: 10px 15px;
+    padding: 10px 0;
     background-color: #fff;
     border: 3px solid #fff;
     border-radius: 3px;
     color: #222;
     text-shadow: -1px 5px 10px #bbb;
-`;
-
-const OptionsContainer = styled.div`
-    margin-bottom: 10px;
-    backgroun-color: #333;
-    color: #dcdcdc;
+    @media (max-width: 400px) {
+        width: auto;
+    }
 `;
 
 const Label = styled.label`
-    margin: 0 10px 10px;
+    margin: 0;
 `;
 
 const Input = styled.input`
     max-width: 70px;
+    margin: 0 3px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: bold;
 `;
 
 class Option extends Component {
@@ -59,7 +67,7 @@ class Option extends Component {
         return (
             <Label>
                 {this.props.title}
-                <Input type={this.props.type} onChange={() => this.handleChange()} defaultValue={this.props.value}/>
+                <Input className={this.props.class} type={this.props.type} onChange={() => this.handleChange()} defaultValue={this.props.value} />
             </Label>
         );
     }
@@ -79,7 +87,7 @@ class Options extends Component {
         return (
             <OptionsContainer>
                 <Title>Random Item Picker</Title>
-                <Option title="Show Timer: " type="checkbox" action="showTimer" />
+                <Option title="Show Timer: " type="checkbox" action="showTimer" class="timer-checkbox" />
                 <Option title="Seconds: " type="number" value={this.state.time} />
             </OptionsContainer>
         );
