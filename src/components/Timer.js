@@ -28,10 +28,14 @@ const ItemsScroll = styled.div`
     margin: 15px 0;
     color: #fff;
     fon-family: Arial, sans-serif;
-    font-size: 78px;
+    font-size: 10vw;
+    white-space: nowrap;
     cursor: pointer;
     opacity: 0;
-    transition: opacity 0.2s
+    transition: opacity 0.2s;
+    @media (min-width: 1000px) {
+        font-size: 70px;
+    }
 `;
 
 const Time = styled.div`
@@ -53,18 +57,25 @@ const TimeFragment = styled.span`
 `;
 
 const TimesUp = styled.div`
+    padding-top: 25vh;
     background-color: red;
     color: #fff;
-    font-size: 16vw;
+    font-size: 15vw;
     font-weight: bold;
     text-align: center;
-    line-height: 60vh; 
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     display: none;
+`;
+
+const ClickContinue = styled.div`
+    color: #eee;
+    font-size: 2vw;
+    font-weight: normal;
+    line-height: 1;
 `;
 
 class Timer extends Component {
@@ -157,7 +168,7 @@ class Timer extends Component {
         // Check if we're at zero.
         if (seconds == 0) { 
           clearInterval(this.timer);
-          alert('time\'s up!');
+          document.querySelector('.timer-checkbox').checked ? document.querySelector('.times-up').style.display = 'block' : null;
         }
 
         // Add zero to minute mark
@@ -169,17 +180,24 @@ class Timer extends Component {
             timerSeconds[1].textContent = '0' + timerSeconds[1].textContent;
         }
       }
+
+      closeThis() {
+        document.querySelector('.times-up').style.display = 'none';  
+      }
     
       render() {
         return(
-          <div>
+          <div style={{gridColumn: 'span 10'}}>
             <ItemsScroll className="itemScroll"></ItemsScroll>
             <Button className="startStopButton" onClick={() => this.startStop()}>{this.state.status}</Button>
             <Time className="timerWrapper">
                 <TimeFragment>{this.state.time.m}</TimeFragment> : 
                 <TimeFragment>{this.state.time.s}</TimeFragment>
             </Time>
-            <TimesUp active={this.props.active}>Time's Up!</TimesUp>
+            <TimesUp className="times-up" onClick={() => this.closeThis()}>
+                Time's Up!
+                <ClickContinue>Tap anywhere to continue</ClickContinue>
+            </TimesUp>
           </div>
         );
       }
