@@ -71,10 +71,10 @@ const Form = styled.form`
 `;
 
 class List extends Component {
-  onClickClose(index, event) {
-    var index = parseInt(index);
-    console.log(index);
-    this.props.removeItem(index);
+  onClickClose(index, e) {
+    let itemIndex = parseInt(index);
+    console.log(itemIndex);
+    this.props.removeItem(itemIndex);
   }
 
   render() {
@@ -83,7 +83,7 @@ class List extends Component {
         {this.props.items.map((item, index) => (
           <ListItem key={index}>
             {item}
-            <DeleteButton className="fa fa-times" aria-hidden="true" onClick={this.onClickClose.bind(this, index)} />
+            <DeleteButton className="fa fa-times" aria-hidden="true" index={index} onClick={this.onClickClose.bind(this, index)} />
           </ListItem>
         ))}
       </ItemsList>
@@ -97,7 +97,8 @@ class ItemList extends Component {
     this.state = {
       item: "",
       items: []
-    }
+    },
+    this.removeItem = this.removeItem.bind(this);
   }
 
   onChange = event => {
@@ -120,6 +121,7 @@ class ItemList extends Component {
   };
 
   removeItem(itemIndex) {
+    console.log(itemIndex);
     let allItems = this.state.items;
     allItems.splice(itemIndex, 1);
     let newItems = allItems;
@@ -135,7 +137,7 @@ class ItemList extends Component {
             <Button type="submit">add item</Button>
           </Label>
         </Form>
-        <List items={this.state.items} removeItem={() => this.removeItem()} />
+        <List items={this.state.items} removeItem={this.removeItem} />
       </ItemsButton>
     );
   }
