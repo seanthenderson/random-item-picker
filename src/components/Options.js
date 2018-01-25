@@ -33,6 +33,10 @@ const Title = styled.h1`
 const Label = styled.label`
     margin: 0;
     font-weight: bold;
+    @media (max-width: 360px) {
+        margin-bottom: 5px;
+        display: block;
+    }
 `;
 
 const Input = styled.input`

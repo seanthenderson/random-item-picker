@@ -13,6 +13,12 @@ main {
   padding: 3vh 15px;
 }
 
+@media (max-width: 400px) {
+  main {
+    padding: 3vh 5px;
+  }
+}
+
 input[type="checkbox"] {
   zoom: 3;
   vertical-align: middle;
