@@ -73,7 +73,6 @@ const Form = styled.form`
 class List extends Component {
   onClickClose(index, e) {
     let itemIndex = parseInt(index);
-    console.log(itemIndex);
     this.props.removeItem(itemIndex);
   }
 
@@ -121,11 +120,15 @@ class ItemList extends Component {
   };
 
   removeItem(itemIndex) {
-    console.log(itemIndex);
     let allItems = this.state.items;
     allItems.splice(itemIndex, 1);
     let newItems = allItems;
     this.setState({items: newItems});
+
+    const button = document.querySelector('.startStopButton');
+    newItems.length < 2 ? button.style.opacity = 0 : null;
+
+    x--;
   }
 
   render() {
