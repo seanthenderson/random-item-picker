@@ -26,9 +26,12 @@ const Button = styled.div`
 
 const ItemsScroll = styled.div`
     margin: 15px 0;
+    padding: 10px 0;
+    border-radius: 5px;
     color: #fff;
     fon-family: Arial, sans-serif;
     font-size: 10vw;
+    text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.7);
     white-space: nowrap;
     cursor: pointer;
     opacity: 0;
@@ -40,41 +43,47 @@ const ItemsScroll = styled.div`
 
 const Time = styled.div`
     margin-top: 20px;
-    color: #dcdcdc;
-    font-size: 30px;
+    color: #000;
+    font-size: 40px;
     font-weight: bold;
     opacity: 0;
     transform: opacity 0.5s;
 `;
 
 const TimeFragment = styled.span`
-    margin-left: 5px;
-    padding: 5px;
-    background-color: #fff;
-    border-radius: 3px;
-    color: #222;
-    font-size: 35px;
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #000;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 45px;
 `;
 
 const TimesUp = styled.div`
     padding-top: 25vh;
     background-color: red;
     color: #fff;
+    font-family: 'Bangers', cursive;
     font-size: 15vw;
-    font-weight: bold;
+    font-weight: normal;
     text-align: center;
+    text-transform: uppercase;
+    text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     display: none;
+    cursor: pointer;
 `;
 
 const ClickContinue = styled.div`
     color: #eee;
+    font-family: Arial, sans-serif;
     font-size: 2vw;
     font-weight: normal;
+    text-shadow: none;
     line-height: 1;
 `;
 
@@ -191,7 +200,7 @@ class Timer extends Component {
             <ItemsScroll className="itemScroll"></ItemsScroll>
             <Button className="startStopButton" onClick={() => this.startStop()}>{this.state.status}</Button>
             <Time className="timerWrapper">
-                <TimeFragment>{this.state.time.m}</TimeFragment> : 
+                <TimeFragment>{this.state.time.m}</TimeFragment>: 
                 <TimeFragment>{this.state.time.s}</TimeFragment>
             </Time>
             <TimesUp className="times-up" onClick={() => this.closeThis()}>

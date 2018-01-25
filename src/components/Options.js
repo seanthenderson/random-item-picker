@@ -4,17 +4,27 @@ import styled from 'styled-components';
 const OptionsContainer = styled.div`
     margin-bottom: 10px;
     color: #222;
+    color: #eee;
 `;
 
 const Title = styled.h1`
-    width: 360px;
+    width: 100%;
     margin: 0 auto 30px;
     padding: 10px 0;
-    background-color: #101010;
+    background-color: #ff4f4f;
     border: 4px solid #101010; 
-    color: #eee;
-    font-size: 30px;
+    color: #fff;
+    font-family: 'Bangers', cursive;
+    font-size: 4vw;
+    font-weight: normal;
+    text-align: center;
     text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 1000;
+    text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
+    @media (max-width: 800px) {
+        font-size: 10vw;
+    }
     @media (max-width: 400px) {
         width: auto;
     }
@@ -22,10 +32,11 @@ const Title = styled.h1`
 
 const Label = styled.label`
     margin: 0;
+    font-weight: bold;
 `;
 
 const Input = styled.input`
-    max-width: 70px;
+    max-width: 50px;
     margin: 0 3px;
     padding: 10px 15px;
     border: 1px solid #ddd;
@@ -86,7 +97,7 @@ class Options extends Component {
     render() {
         return (
             <OptionsContainer>
-                <Title>Random Item Picker</Title>
+                <Title>Random Item Picker!!</Title>
                 <Option title="Show Timer: " type="checkbox" action="showTimer" class="timer-checkbox" />
                 <Option title="Seconds: " type="number" value={this.state.time} />
             </OptionsContainer>

@@ -1,6 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Bangers);
+
 body {
   text-align: center;
-  background-color: #000;
+  background-color: #A0A7B1;
+  background-color: #30303A;
 }
 
 main {
@@ -8,7 +11,6 @@ main {
   min-height: 100vh;
   margin: auto;
   padding: 3vh 15px;
-  background-color: #A0A7B1;
 }
 
 input[type="checkbox"] {
@@ -16,5 +18,7 @@ input[type="checkbox"] {
   vertical-align: middle;
   filter: brightness(150%);
 }
+
+
 
 
