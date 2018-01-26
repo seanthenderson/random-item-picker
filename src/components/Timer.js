@@ -6,7 +6,7 @@ let intervalHandle;
 let initialTime = 60;
 
 const Button = styled.button`
-    width: 150px;
+    width: 180px;
     margin: auto;
     padding: 20px;
     background: #1fa91f;
@@ -22,6 +22,9 @@ const Button = styled.button`
     display: block;
     opacity: 0;
     cursor: pointer;
+    &:focus {
+        outline: 0;
+    }
 `;
 
 const ItemsScroll = styled.div`
@@ -42,20 +45,23 @@ const ItemsScroll = styled.div`
 `;
 
 const Time = styled.div`
-    margin-top: 20px;
-    color: #000;
-    font-size: 40px;
+    width: 140px;
+    margin: 25px auto;
+    padding: 10px 0;
+    background-color: #000;
+    border-radius: 20px;
+    color: #00FF00;
+    font-size: 45px;
     font-weight: bold;
     opacity: 0;
     transform: opacity 0.5s;
 `;
 
 const TimeFragment = styled.span`
-    margin: 0 5px;
     padding: 5px 10px;
     background-color: #000;
     border-radius: 8px;
-    color: #fff;
+    color: #00FF00;
     font-size: 45px;
 `;
 
