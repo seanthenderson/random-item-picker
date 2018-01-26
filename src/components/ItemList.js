@@ -15,18 +15,16 @@ const Input = styled.input`
   margin: 0 3px;
   padding: 10px 15px;
   border: 1px solid #ddd;
-  border-radius: 3px;
   font-size: 18px;
   font-weight: bold;
   grid-column: span 8;
 `;
 
 const Button = styled.button`
-  margin-left: 5px;
-  padding: 10px 12px;
+  margin-left: -3px;
+  padding: 15px 12px;
   background: rgb(17, 90, 248);
   border: 1px solid rgb(17, 90, 248);
-  border-radius: 3px;
   color: #ececec;
   font-size: 18px;
   cursor: pointer;
