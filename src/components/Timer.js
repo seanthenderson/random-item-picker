@@ -33,7 +33,7 @@ const ItemsScroll = styled.div`
     color: #fff;
     fon-family: Arial, sans-serif;
     font-size: 10vw;
-    text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.7);
+    font-weight: bold;
     white-space: nowrap;
     cursor: pointer;
     opacity: 0;
@@ -51,7 +51,7 @@ const Time = styled.div`
     border: solid 4px mintcream;
     border-radius: 20px;
     color: #00FF00;
-    font-size: 45px;
+    font-size: 55px;
     font-weight: bold;
     opacity: 0;
     transform: opacity 0.5s;
@@ -62,7 +62,7 @@ const TimeFragment = styled.span`
     background-color: #000;
     border-radius: 8px;
     color: #00FF00;
-    font-size: 45px;
+    font-size: 55px;
 `;
 
 const TimesUp = styled.div`
