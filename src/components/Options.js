@@ -11,8 +11,8 @@ const Title = styled.h1`
     width: 100%;
     margin: 0 auto 30px;
     padding: 10px 0;
-    color: #159957;
-    font-family: 'Bangers', cursive;
+    color: #1fa91f;
+    font-family: 'Bangers', Arial, sans-serif;
     font-size: 4vw;
     font-weight: normal;
     text-align: center;
