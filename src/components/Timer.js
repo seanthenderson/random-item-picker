@@ -10,8 +10,7 @@ const Button = styled.button`
     margin: auto;
     padding: 20px;
     background: #1fa91f;
-    border: 3px solid #fff;
-    border-radius: 10px;
+    border: none;
     color: #fff;
     font-family: Arial, sans-serif;
     font-size: 30px;
@@ -45,10 +44,11 @@ const ItemsScroll = styled.div`
 `;
 
 const Time = styled.div`
-    width: 140px;
+    width: 170px;
     margin: 25px auto;
     padding: 10px 0;
     background-color: #000;
+    border: solid 4px mintcream;
     border-radius: 20px;
     color: #00FF00;
     font-size: 45px;
