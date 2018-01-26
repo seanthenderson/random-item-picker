@@ -70,7 +70,7 @@ const TimesUp = styled.div`
     background-color: red;
     color: #fff;
     font-family: 'Bangers', cursive;
-    font-size: 15vw;
+    font-size: 20vw;
     font-weight: normal;
     text-align: center;
     text-transform: uppercase;

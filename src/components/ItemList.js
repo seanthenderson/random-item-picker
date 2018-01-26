@@ -6,7 +6,6 @@ let items = [];
 
 const Label = styled.label`
   color: #dcdcdc;
-  flex-grow: 1;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
 `;
@@ -17,10 +16,7 @@ const Input = styled.input`
   border: 1px solid #ddd;
   font-size: 18px;
   font-weight: bold;
-  grid-column: span 8;
-  @media (max-width: 400px) {
-    grid-column: span 9;
-  }
+  grid-column: span 9;
 `;
 
 const Button = styled.button`
@@ -31,10 +27,9 @@ const Button = styled.button`
   color: #ececec;
   font-size: 18px;
   cursor: pointer;
-  grid-column: span 2;
+  grid-column: span 1;
   @media (max-width: 400px) {
     padding: 5px;
-    grid-column: span 1;
   }
 `;
 
@@ -72,7 +67,6 @@ const DeleteButton = styled.i`
 
 const Form = styled.form`
   margin-top: 20px;
-  display: flex;
 `;
 
 class List extends Component {
@@ -106,7 +100,7 @@ class ItemList extends Component {
   }
 
   onChange = event => {
-    const button = document.querySelector('.startStopButton');
+    //const button = document.querySelector('.startStopButton');
     this.setState({ item: event.target.value });
   };
 
@@ -141,8 +135,8 @@ class ItemList extends Component {
       <ItemsButton>
         <Form className="addItemForm" onSubmit={this.onSubmit}>
           <Label>
-            <Input value={this.state.item} onChange={this.onChange} />
-            <Button type="submit">add item</Button>
+            <Input value={this.state.item} type="text" onChange={this.onChange} placeholder="add an item, name, task, etc." />
+            <Button type="submit">add</Button>
           </Label>
         </Form>
         <List items={this.state.items} removeItem={this.removeItem} />
