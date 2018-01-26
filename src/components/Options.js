@@ -38,13 +38,14 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-    max-width: 50px;
+    width: 40px;
     margin: 0 3px;
-    padding: 10px 15px;
+    padding: 2px 5px;
     border: 1px solid #ddd;
     border-radius: 3px;
     font-size: 18px;
     font-weight: bold;
+    vertical-align: middle;
 `;
 
 class Option extends Component {

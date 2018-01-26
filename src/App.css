@@ -18,11 +18,6 @@ main {
   }
 }
 
-input[type="checkbox"] {
-  zoom: 3;
-  vertical-align: middle;
-  filter: brightness(150%);
-}
 
 
 

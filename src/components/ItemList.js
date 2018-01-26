@@ -18,6 +18,9 @@ const Input = styled.input`
   font-size: 18px;
   font-weight: bold;
   grid-column: span 8;
+  @media (max-width: 400px) {
+    grid-column: span 9;
+  }
 `;
 
 const Button = styled.button`
@@ -29,6 +32,10 @@ const Button = styled.button`
   font-size: 18px;
   cursor: pointer;
   grid-column: span 2;
+  @media (max-width: 400px) {
+    padding: 5px;
+    grid-column: span 1;
+  }
 `;
 
 const ItemsButton = styled.div`
