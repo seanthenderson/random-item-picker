@@ -5,7 +5,7 @@ let x = 0;
 let intervalHandle;
 let initialTime = 60;
 
-const Button = styled.div`
+const Button = styled.button`
     width: 150px;
     margin: auto;
     padding: 20px;
