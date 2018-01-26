@@ -136,7 +136,7 @@ class Timer extends Component {
     
       startStop() {
         // Get time input value  
-        const initialTimeInput = document.querySelector('input[type="number"').value;
+        const initialTimeInput = document.querySelector('.seconds-input').value;
         initialTime = initialTimeInput;
         
         // Start/Stop timer

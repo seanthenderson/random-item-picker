@@ -101,7 +101,7 @@ class Options extends Component {
             <OptionsContainer>
                 <Title>Random Item Picker!!</Title>
                 <Option title="Show Timer: " type="checkbox" action="showTimer" class="timer-checkbox" />
-                <Option title="Seconds: " type="number" value={this.state.time} />
+                <Option title="Seconds: " type="number" value={this.state.time} class="seconds-input" />
             </OptionsContainer>
         );
     }
