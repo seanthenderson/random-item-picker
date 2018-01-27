@@ -51,7 +51,7 @@ const Time = styled.div`
     border: solid 4px mintcream;
     border-radius: 20px;
     color: #00FF00;
-    font-size: 55px;
+    font-size: 50px;
     font-weight: bold;
     opacity: 0;
     transform: opacity 0.5s;
@@ -62,7 +62,7 @@ const TimeFragment = styled.span`
     background-color: #000;
     border-radius: 8px;
     color: #00FF00;
-    font-size: 55px;
+    font-size: 50px;
 `;
 
 const TimesUp = styled.div`
