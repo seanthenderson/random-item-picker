@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 
 let x = 0;
-let items = [];
+//let items = [];
 
 const Label = styled.label`
   color: #dcdcdc;

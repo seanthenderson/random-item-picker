@@ -181,7 +181,7 @@ class Timer extends Component {
         });
         
         // Check if we're at zero.
-        if (seconds == 0) { 
+        if (seconds === 0) { 
           clearInterval(this.timer);
           document.querySelector('.timer-checkbox').checked ? document.querySelector('.times-up').style.display = 'block' : null;
         }
