@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
 
-let x = 0;
-//let items = [];
-
 const Label = styled.label`
   color: #dcdcdc;
   display: grid;
@@ -94,13 +91,13 @@ class ItemList extends Component {
     super(props);
     this.state = {
       item: "",
-      items: []
+      items: [],
+      itemCount: 0
     },
     this.removeItem = this.removeItem.bind(this);
   }
 
   onChange = event => {
-    //const button = document.querySelector('.startStopButton');
     this.setState({ item: event.target.value });
   };
 
@@ -112,10 +109,13 @@ class ItemList extends Component {
       items: [...this.state.items, this.state.item]
     });
 
-    if (x === 1) {
-      document.querySelector(".startStopButton").style.opacity = 1;
-    }
-    x++;
+    this.state.itemCount > 0 
+      ? document.querySelector(".startStopButton").style.opacity = 1
+      : document.querySelector(".startStopButton").style.opacity = 0;
+    
+    this.setState(prevState => {
+      return {itemCount: prevState.itemCount + 1}
+    });
   };
 
   removeItem(itemIndex) {
@@ -127,7 +127,9 @@ class ItemList extends Component {
     const button = document.querySelector('.startStopButton');
     newItems.length < 2 ? button.style.opacity = 0 : null;
 
-    x--;
+    this.setState(prevState => {
+      return {itemCount: prevState.itemCount - 1}
+    });
   }
 
   render() {
