@@ -6,7 +6,9 @@
     "font-awesome": "^4.7.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
     "react-scripts": "1.1.0",
+    "redux": "^3.7.2",
     "styled-components": "^3.0.1"
   },
   "scripts": {
@@ -19,6 +21,7 @@
   "homepage": "https://seanthenderson.github.io/random-item-picker",
   "devDependencies": {
     "gh-pages": "^1.1.0",
-    "github-pages": "^3.0.2"
+    "github-pages": "^3.0.2",
+    "redux-devtools": "^3.4.1"
   }
 }
