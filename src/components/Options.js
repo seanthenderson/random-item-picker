@@ -59,6 +59,12 @@ class Option extends Component {
     };
   }
 
+  showTimer(timer) {
+    this.state.showTimer === true
+      ? (timer.style.opacity = 1)
+      : (timer.style.opacity = 0);
+  }
+
   handleChange() {
     if (this.props.action === "showTimer") {
       const timer = document.querySelector(".timerWrapper");
@@ -66,9 +72,7 @@ class Option extends Component {
       this.state.showTimer === true
         ? this.setState({ showTimer: false })
         : this.setState({ showTimer: true });
-      this.state.showTimer === true
-        ? (timer.style.opacity = 1)
-        : (timer.style.opacity = 0);
+      this.showTimer(timer);
     }
 
     // Add zero to minute mark
